@@ -4,6 +4,8 @@ import br.dev.luizmachado.CadastrosDeNinja.Ninja.NinjaModel;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tb_missoes")
 @AllArgsConstructor
@@ -20,7 +22,6 @@ public class MissaoModel {
     @Column(name = "nivel_missao")
     private String nivel;
 
-    @Column(name = "ninja_encarregado")
-    @OneToMany(mappedBy = "missao_ativa")
-    private NinjaModel ninja;
+    @OneToMany(mappedBy = "missao")
+    private List<NinjaModel> ninjas;
 }

@@ -23,8 +23,10 @@ public class NinjaModel {
     @Column(name = "idade_ninja")
     private int age;
 
-    @Column(name = "missao_ativa")
+    @Column(name = "rank_ninja")
+    private String rank;
+
     @ManyToOne
-    @JoinColumn(name = "id_missoes")
-    private MissaoModel mission;
+    @JoinColumn(name = "missao_id")
+    private MissaoModel missao;
 }
