@@ -1,6 +1,7 @@
 package br.dev.luizmachado.CadastrosDeNinja.Missao;
 
 import br.dev.luizmachado.CadastrosDeNinja.Ninja.NinjaModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,5 +24,6 @@ public class MissaoModel {
     private String nivel;
 
     @OneToMany(mappedBy = "missao")
+    @JsonIgnore
     private List<NinjaModel> ninjas;
 }
