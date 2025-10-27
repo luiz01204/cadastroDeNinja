@@ -12,7 +12,7 @@ public class MissaoMapper {
         dto.setId(model.getId());
         dto.setName(model.getName());
         dto.setNivel(model.getNivel());
-        dto.setNinjas(model.getNinjas()); // cuidado com recursão, explico abaixo
+        dto.setNinjas(model.getNinjas());
 
         return dto;
     }

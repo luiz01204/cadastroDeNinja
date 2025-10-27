@@ -3,6 +3,9 @@ package br.dev.luizmachado.CadastrosDeNinja.Ninja;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -11,11 +14,6 @@ public class NinjaController {
 
     @Autowired
     private NinjaService ninjaService;
-
-    @GetMapping("/welcome")
-    public String welcome() {
-        return "Bem-vindo à API de ninjas!";
-    }
 
     @GetMapping("/all")
     public ResponseEntity<List<NinjaDTO>> getAll(){
@@ -34,9 +32,9 @@ public class NinjaController {
     }
 
     @PostMapping("/create")
-    public  ResponseEntity<NinjaDTO> create(@RequestBody NinjaDTO ninjaDTO){
+    public  ResponseEntity<NinjaDTO> create(@RequestBody NinjaDTO ninjaDTO) throws URISyntaxException {
         NinjaDTO ninja = ninjaService.create(ninjaDTO);
-        return ResponseEntity.ok(ninja);
+        return ResponseEntity.created(new URI("localhost:8080/ninja/"+ ninja.getId())).build();
     }
 
 

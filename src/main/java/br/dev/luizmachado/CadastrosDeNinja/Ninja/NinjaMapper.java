@@ -17,7 +17,6 @@ public class NinjaMapper {
         model.setAge(dto.getAge());
         model.setRank(dto.getRank());
 
-        // Se vier o ID da missão, cria um model só com o ID
         if (dto.getMissaoId() != null) {
             MissaoModel missao = new MissaoModel();
             missao.setId(dto.getMissaoId());
@@ -37,7 +36,6 @@ public class NinjaMapper {
         dto.setAge(model.getAge());
         dto.setRank(model.getRank());
 
-        // Inclui o objeto completo da missão no retorno
         if (model.getMissao() != null) {
             dto.setMissaoId(model.getMissao().getId());
             dto.setMissao(MissaoMapper.toDTO(model.getMissao()));
